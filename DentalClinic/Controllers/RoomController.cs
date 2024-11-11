@@ -9,7 +9,8 @@ namespace DentalClinic.Controllers
     [ApiController]
     public class RoomController : ControllerBase
     {
-        static private List<Room> Rooms = new List<Room>();
+        private readonly DataContext _context = new DataContext();
+       // static private List<Room> _context.Rooms = new List<Room>();
         public RoomController()
         {
             
@@ -19,42 +20,42 @@ namespace DentalClinic.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            yield return ""+Rooms.ToString();
+            yield return ""+_context.Rooms.ToString();
         }
 
         // GET api/<RoomController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return ""+Rooms.FirstOrDefault(r => r.Id == id, Rooms.First()).ToString(); 
+            return ""+_context.Rooms.FirstOrDefault(r => r.Id == id, _context.Rooms.First()).ToString(); 
         }
 
         /*//GET by floor
        [HttpGet("{floor}")]
        public string Get(int floor)
        {
-           return ""+Rooms.All(r => r.Floor == floor).ToString();
+           return ""+_context.Rooms.All(r => r.Floor == floor).ToString();
        }*/
 
         //GET by suitabe
         [HttpGet("{suitable}")]
         public string Get(string suitable)
         {
-            return "" + Rooms.All(r => r.Suitable== suitable).ToString();
+            return "" + _context.Rooms.All(r => r.Suitable== suitable).ToString();
         }
 
         // POST api/<RoomController>
         [HttpPost]
         public void Post([FromBody] Room r)
         {
-            Rooms.Add(new Room(r.Floor,r.Number,r.Suitable));
+            _context.Rooms.Add(new Room(r.Floor,r.Number,r.Suitable));
         }
 
         // PUT api/<RoomController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Room r)
         {
-            Room room = Rooms.FirstOrDefault(r => r.Id == id);
+            Room room = _context.Rooms.FirstOrDefault(r => r.Id == id);
             room.Number = r.Number;
             room.Floor = r.Floor;
             room.Suitable = r.Suitable;
@@ -64,7 +65,7 @@ namespace DentalClinic.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            Rooms.Remove(Rooms.FirstOrDefault(r => r.Id == id));
+            _context.Rooms.Remove(_context.Rooms.FirstOrDefault(r => r.Id == id));
         }
     }
 }

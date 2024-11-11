@@ -6,7 +6,7 @@
         public int Number { get; set; }
         public int Id { get { return Floor * 100 + Number; } }
         public string Suitable { get; set; }
-
+      
         public Room()
         {
             

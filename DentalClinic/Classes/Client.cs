@@ -30,5 +30,20 @@
         {
             return $"client id:{Id}, name:{Name}, address:{Address}, medicalInsurance:{MedicalInsurance}, birthDate:{BirthDate}";
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Client client &&
+                   Id == client.Id &&
+                   Name == client.Name &&
+                   Address == client.Address &&
+                   MedicalInsurance == client.MedicalInsurance &&
+                   BirthDate.Equals(client.BirthDate);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, Address, MedicalInsurance, BirthDate);
+        }
     }
 }

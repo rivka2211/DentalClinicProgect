@@ -1,4 +1,5 @@
-﻿namespace DentalClinic.Classes
+﻿
+namespace DentalClinic.Classes
 {
     public class Room
     {
@@ -22,6 +23,20 @@
         public override string? ToString()
         {
             return $"room number:{Number}, floor:{Floor}, suitable:{Suitable} \n";
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Room room &&
+                   Floor == room.Floor &&
+                   Number == room.Number &&
+                   Id == room.Id &&
+                   Suitable == room.Suitable;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Floor, Number, Id, Suitable);
         }
     }
 }

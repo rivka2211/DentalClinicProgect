@@ -10,6 +10,14 @@ namespace DentalClinicTesting
 {
     public class ClientControlerTests
     {
+        private readonly ClientController _clientContorller;
+
+        public ClientControlerTests()
+        {
+            _clientContorller = new ClientController();
+        }
+
+
         [Fact]
         public void GetAll_ReturnsOK()
         {

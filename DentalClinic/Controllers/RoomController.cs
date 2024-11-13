@@ -30,12 +30,12 @@ namespace DentalClinic.Controllers
             return ""+_context.Rooms.FirstOrDefault(r => r.Id == id, _context.Rooms.First()).ToString(); 
         }
 
-        /*//GET by floor
-       [HttpGet("{floor}")]
-       public string Get(int floor)
-       {
-           return ""+_context.Rooms.All(r => r.Floor == floor).ToString();
-       }*/
+        ////GET by floor
+        //[HttpGet("{floor}")]
+        //public string Get(int floor)
+        //{
+        //    return "" + _context.Rooms.All(r => r.Floor == floor).ToString();
+        //}
 
         //GET by suitabe
         [HttpGet("{suitable}")]

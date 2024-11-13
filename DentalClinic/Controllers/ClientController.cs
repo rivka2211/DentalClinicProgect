@@ -25,7 +25,7 @@ namespace DentalClinic.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return ""+ _context.Clients.FirstOrDefault(c=>c.Id==id, _context.Clients.First()).ToString();
+            return ""+ _context.Clients.Find(c=>c.Id==id).ToString();
         }
 
         //GET by medicalInsurance
@@ -51,7 +51,7 @@ namespace DentalClinic.Controllers
             client.Address = c.Address;
             client.MedicalInsurance = c.MedicalInsurance;
             client.BirthDate = c.BirthDate;
-                    }
+        }
 
         // DELETE api/<Client>/5
         [HttpDelete("{id}")]

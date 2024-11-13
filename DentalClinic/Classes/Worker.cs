@@ -1,4 +1,5 @@
-﻿namespace DentalClinic.Classes
+﻿
+namespace DentalClinic.Classes
 {
     public enum ProfessionsEnum
     {
@@ -29,6 +30,21 @@
         public override string ToString()
         {
             return $"worker: id={Id}, name={Name}, profession={Profession} \n";
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Worker worker &&
+                   Id == worker.Id &&
+                   Name == worker.Name &&
+                   Profession == worker.Profession &&
+                   Address == worker.Address &&
+                   Salary == worker.Salary;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, Profession, Address, Salary);
         }
     }
 }
